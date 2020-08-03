@@ -47,10 +47,11 @@ rover --clone-folder /landingzones/landingzone_networking --clone-branch vnext13
 # Deploy the launchpad light to store the tfstates.
 rover -lz /tf/caf/landingzones/launchpad -a apply -launchpad -var location=southeastasia
 ## To deploy dependencies for accounting, apply caf foundations.
-rover -lz /tf/caf/landingzones/landingzone_caf_foundations/ \
+/*rover -lz /tf/caf/landingzones/landingzone_caf_foundations/ \
       -tfstate ${example}_landingzone_caf_foundations.tfstate \
       -var-file /tf/caf/examples/${example}/landingzone_caf_foundations.tfvars \
       -a apply
+      */
 
 # Deploy networking
 rover -lz /tf/caf/landingzones/landingzone_networking/ \
