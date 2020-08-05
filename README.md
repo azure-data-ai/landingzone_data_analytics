@@ -47,25 +47,39 @@ rover --clone-folder /landingzones/landingzone_networking --clone-branch vnext13
 # Deploy the launchpad light to store the tfstates.
 rover -lz /tf/caf/landingzones/launchpad -a apply -launchpad -var location=southeastasia
 ## To deploy dependencies for accounting, apply caf foundations.
-/*rover -lz /tf/caf/landingzones/landingzone_caf_foundations/ \
-      -tfstate ${example}_landingzone_caf_foundations.tfstate \
+# rover -lz /tf/caf/landingzones/landingzone_caf_foundations/ \
+#      -tfstate ${example}_landingzone_caf_foundations.tfstate \
+#      -var-file /tf/caf/examples/${example}/landingzone_caf_foundations.tfvars \
+#      -a apply
+rover -lz /tf/caf/landingzones/landingzone_caf_foundations/ \
+      -tfstate landingzone_caf_foundations.tfstate \
       -var-file /tf/caf/examples/${example}/landingzone_caf_foundations.tfvars \
       -a apply
-      */
 
 # Deploy networking
+#rover -lz /tf/caf/landingzones/landingzone_networking/ \
+#      -tfstate ${example}_landingzone_networking.tfstate \
+#      -var-file /tf/caf/examples/${example}/landingzone_networking.tfvars \
+#      -a apply
 rover -lz /tf/caf/landingzones/landingzone_networking/ \
-      -tfstate ${example}_landingzone_networking.tfstate \
+      -tfstate landingzone_networking.tfstate \
       -var-file /tf/caf/examples/${example}/landingzone_networking.tfvars \
       -a apply
 
 # Run data landing zone deployment
+#rover -lz /tf/caf/ \
+#      -tfstate ${example}_landingzone_data.tfstate \
+#      -var-file /tf/caf/examples/${example}/configuration.tfvars \
+#      -var tfstate_landingzone_networking=${example}_landingzone_networking.tfstate \
+#      -var landingzone_tag=${example}_landingzone_aks \
+#      -a apply
 rover -lz /tf/caf/ \
       -tfstate ${example}_landingzone_data.tfstate \
       -var-file /tf/caf/examples/${example}/configuration.tfvars \
-      -var tfstate_landingzone_networking=${example}_landingzone_networking.tfstate \
-      -var landingzone_tag=${example}_landingzone_aks \
+      -var tfstate_landingzone_networking=landingzone_networking.tfstate \
+      -var landingzone_tag=${example}_landingzone_data_analytics \
       -a apply
+      
 ```
 
 ## Deleting the development environment
