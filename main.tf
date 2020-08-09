@@ -14,6 +14,9 @@ terraform {
       source  = "hashicorp/azurerm"
       version = "~>2.20.0"
     }
+    databricks = {
+      source = "databrickslabs/databricks"
+    }
   }
   required_version = ">= 0.13"
 }
@@ -49,4 +52,5 @@ locals {
   tags                       = merge(var.tags, local.landingzone_tag, { "environment" = local.global_settings.environment })
   caf_foundations_accounting = data.terraform_remote_state.landingzone_caf_foundations.outputs.foundations_accounting
   vnets                      = data.terraform_remote_state.landingzone_networking.outputs.vnets
+
 }

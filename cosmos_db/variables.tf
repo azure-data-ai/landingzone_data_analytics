@@ -1,0 +1,1 @@
+variable cosmos_db_config {} 

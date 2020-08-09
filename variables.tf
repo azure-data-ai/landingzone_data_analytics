@@ -45,3 +45,15 @@ variable synapse_configs {
 
 variable landingzone_tag {
 }
+
+/* variable databricks_config {
+  default = {}
+} */
+
+variable data_factory_config {
+  default = {}
+} 
+
+variable cosmos_db_config {
+  default = {}
+} 

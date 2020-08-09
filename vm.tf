@@ -24,7 +24,7 @@ module "caf-vm" {
   for_each = var.vm_configs
 
   prefix                       = local.prefix
-  convention                   = local.global_settings.convention
+  convention                   = "passthrough"
   name                         = each.value.vm_name
   resource_group_name          = local.vnets[each.value.vnet_key].vnet_obj.resource_group_name
   location                     = each.value.location

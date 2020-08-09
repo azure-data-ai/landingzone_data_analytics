@@ -27,7 +27,7 @@ resource "azurecaf_naming_convention" "nc_deployment_template_name" {
 resource "azurecaf_naming_convention" "nc_workspace_name" {
   name          = var.synapse_config.workspace_name
   prefix        = var.prefix
-  resource_type = "gen"
+  resource_type = "st"
   max_length    = 40
   convention    = var.convention
 }

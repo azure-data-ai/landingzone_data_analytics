@@ -36,3 +36,29 @@ module "dap_aml_workspace" {
   diagnostics_map         = local.caf_foundations_accounting[each.value.location].diagnostics_map
   log_analytics_workspace = local.caf_foundations_accounting[each.value.location].log_analytics_workspace
 }
+
+
+## ---22 - Jul -- New feature
+#provider "databricks" {}
+
+/* module "dap_databricks" {
+  source = "./databricks"
+
+  #for_each              = var.databricks_config
+  #databricks_config     = each.value 
+} */
+
+
+module "dap_data_factory" {
+  source = "./data_factory"
+
+  for_each    = var.data_factory_config
+  data_factory_config = each.value
+}
+
+module "dap_cosmos_db" {
+  source = "./cosmos_db"
+
+  for_each    = var.cosmos_db_config
+  cosmos_db_config = each.value
+}
