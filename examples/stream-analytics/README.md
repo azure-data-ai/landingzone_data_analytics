@@ -10,7 +10,7 @@ Further this can be used for visualization and for ML usec case or other downstr
 
 ![Example Architecture](../../_images/stream-analytics.PNG)
 
-### Apply the landing zone
+### Apply the landingzone template
 ```bash
 # Set the folder name of this example
 example=stream-analytics

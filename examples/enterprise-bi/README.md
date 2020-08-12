@@ -11,7 +11,7 @@ In typical enterprise data warehousing usecase some features are important-
 
 ![Example Architecture](../../_images/automated-enterprise-bi.PNG)
 
-### Apply the landing zone
+### Apply the landingzone template
 ```bash
 # Set the folder name of this example
 example=enterprise-bi

@@ -3,7 +3,7 @@ This reference architecture shows an end-to-end stream processing pipeline using
 
 ![Example Architecture](../../_images/databricks-stream-processing.PNG)
 
-### Apply the landing zone
+### Apply the landingzone template
 ```bash
 # Set the folder name of this example
 example=stream-analytics

@@ -12,7 +12,7 @@ Combine any data at any scale, and build and deploy advance analytics applicatio
 ![Example Architecture](../../_images/advance-analytics.PNG)
 
 
-### Apply the landing zone
+### Apply the landingzone template
 ```bash
 # Set the folder name of this example
 example=bigdata-advance-analytics
