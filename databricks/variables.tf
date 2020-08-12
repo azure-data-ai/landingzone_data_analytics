@@ -1,5 +1,5 @@
 
-#variable "databricks_config" {}
+variable "databricks_config" {}
 
 /* variable location {}
 

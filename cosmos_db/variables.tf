@@ -1,1 +1,5 @@
-variable cosmos_db_config {} 
+variable cosmosdb_config {}
+
+variable prefix {}
+
+variable convention {}

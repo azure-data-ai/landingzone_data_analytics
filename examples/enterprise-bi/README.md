@@ -10,3 +10,24 @@ In typical enterprise data warehousing usecase some features are important-
 * Loading binary data such as geospatial data and images.
 
 ![Example Architecture](../../_images/automated-enterprise-bi.PNG)
+
+### Apply the landing zone
+```bash
+# Set the folder name of this example
+example=enterprise-bi
+
+# Deploy networking
+rover -lz /tf/caf/landingzones/landingzone_networking/ \
+      -tfstate landingzone_networking.tfstate \
+      -var-file /tf/caf/examples/${example}/landingzone_networking.tfvars \
+      -a apply
+	  
+# Run data landing zone deployment
+rover -lz /tf/caf/ \
+      -tfstate ${example}_landingzone_data.tfstate \
+      -var-file /tf/caf/examples/${example}/configuration.tfvars \
+      -var tfstate_landingzone_networking=${example}_landingzone_networking.tfstate \
+      -var landingzone_tag=${example}_landingzone_dap \
+      -a apply
+	  
+```

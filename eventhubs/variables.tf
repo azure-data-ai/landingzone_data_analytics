@@ -1,5 +1,4 @@
-
-variable data_factory_config {}
+variable eventhubs_config {}
 
 variable prefix {}
 

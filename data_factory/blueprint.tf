@@ -1,18 +1,37 @@
+# Naming Convention
+resource "azurecaf_naming_convention" "nc_data_factory_rg" {
+  name          = var.data_factory_config.resource_group_name
+  prefix        = var.prefix
+  resource_type = "rg"
+  max_length    = 50
+  convention    = var.convention
+}
+
+resource "azurecaf_naming_convention" "nc_datafactory_workspace" {
+  name          = var.data_factory_config.workspace_name
+  prefix        = var.prefix
+  resource_type = "st"
+  max_length    = 40
+  convention    = var.convention
+}
+
+# Create Resources
+
 resource "azurerm_resource_group" "data_factory_rg" {
-  name     = "data_factory_rg"
-  location = "southeastasia"
+  name     = azurecaf_naming_convention.nc_data_factory_rg.result
+  location = var.data_factory_config.location
 }
 
 ## Data Factory workspace
 resource "azurerm_data_factory" "dap_data_factory" {
-  name                = "dapdfetl01"
-  location            = azurerm_resource_group.data_factory_rg.location
+  name                = azurecaf_naming_convention.nc_datafactory_workspace.result
+  location            = var.data_factory_config.location
   resource_group_name = azurerm_resource_group.data_factory_rg.name
 }
 
-
-
+## -- Variables Refactoring further and adding linked services To be done ---
 ## Linked Services
+
 data "azurerm_storage_account" "df_storage_acc" {
   name                = "rsstoragedemo"
   resource_group_name = "rsResourceGroup"

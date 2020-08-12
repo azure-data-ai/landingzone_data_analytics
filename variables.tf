@@ -46,14 +46,22 @@ variable synapse_configs {
 variable landingzone_tag {
 }
 
-/* variable databricks_config {
+variable databricks_config {
   default = {}
-} */
+}
 
 variable data_factory_config {
   default = {}
 } 
 
-variable cosmos_db_config {
+variable cosmosdb_config {
   default = {}
 } 
+
+variable eventhubs_config {
+  default = {}
+}
+
+variable stream_analytics_config {
+  default = {}
+}

@@ -44,21 +44,43 @@ module "dap_aml_workspace" {
 /* module "dap_databricks" {
   source = "./databricks"
 
-  #for_each              = var.databricks_config
-  #databricks_config     = each.value 
+  for_each              = var.databricks_config
+  databricks_config     = each.value 
 } */
 
 
 module "dap_data_factory" {
   source = "./data_factory"
 
-  for_each    = var.data_factory_config
-  data_factory_config = each.value
+  for_each                = var.data_factory_config
+  data_factory_config     = each.value
+  prefix                  = local.prefix
+  convention              = local.global_settings.convention
 }
 
 module "dap_cosmos_db" {
   source = "./cosmos_db"
 
-  for_each    = var.cosmos_db_config
-  cosmos_db_config = each.value
+  for_each                = var.cosmosdb_config
+  cosmosdb_config         = each.value
+  prefix                  = local.prefix
+  convention              = local.global_settings.convention
+}
+
+module "dap_eventhubs" {
+  source = "./eventhubs"
+
+  for_each                = var.eventhubs_config
+  eventhubs_config        = each.value
+  prefix                  = local.prefix
+  convention              = local.global_settings.convention
+}
+
+module "dap_stream_analytics" {
+  source = "./stream_analytics"
+
+  for_each                = var.stream_analytics_config
+  stream_analytics_config = each.value
+  prefix                  = local.prefix
+  convention              = local.global_settings.convention
 }

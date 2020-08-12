@@ -20,11 +20,11 @@ resource "azurerm_databricks_workspace" "databricks_wrkspc" {
 
 data "azurerm_client_config" "current" {}
 
-resource "azurerm_key_vault_secret" "pat" {
+/* resource "azurerm_key_vault_secret" "pat" {
   name = "pat_secret"
   value = "launchpad"
   key_vault_id = local.keyvaults.id
-}
+} */
 
 resource "azurerm_resource_group" "databricks_rg" {
   name     = "dap_databrics_rg"
@@ -43,7 +43,7 @@ resource "azurerm_databricks_workspace" "databricks_wrkspc" {
   }
 }
 
-provider "databricks" {
+/* provider "databricks" {
   azure_auth = {
     managed_resource_group = "${azurerm_databricks_workspace.databricks_wrkspc.managed_resource_group_name}"
     azure_region           = "${azurerm_databricks_workspace.databricks_wrkspc.location}"
@@ -54,7 +54,7 @@ provider "databricks" {
     tenant_id              = data.azurerm_client_config.current.tenant_id
     subscription_id        = data.azurerm_client_config.current.subscription_id
   }
-} 
+}  */
 
 
 resource "databricks_instance_pool" "my-demo-pool" {

@@ -1,5 +1,4 @@
-
-variable data_factory_config {}
+variable stream_analytics_config {}
 
 variable prefix {}
 

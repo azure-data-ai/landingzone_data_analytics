@@ -22,6 +22,6 @@ curl https://raw.githubusercontent.com/databrickslabs/databricks-terraform/maste
 */
 
 
-locals {
+/* locals {
   keyvaults = data.terraform_remote_state.launchpad.outputs.keyvaults
-}
+} */

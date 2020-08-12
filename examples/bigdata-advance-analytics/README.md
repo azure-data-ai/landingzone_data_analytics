@@ -10,3 +10,25 @@ Combine any data at any scale, and build and deploy advance analytics applicatio
 * Take the insights from Azure Databricks to Cosmos DB to make them accessible through web and mobile apps.
 
 ![Example Architecture](../../_images/advance-analytics.PNG)
+
+
+### Apply the landing zone
+```bash
+# Set the folder name of this example
+example=bigdata-advance-analytics
+
+# Deploy networking
+rover -lz /tf/caf/landingzones/landingzone_networking/ \
+      -tfstate landingzone_networking.tfstate \
+      -var-file /tf/caf/examples/${example}/landingzone_networking.tfvars \
+      -a apply
+	  
+# Run data landing zone deployment
+rover -lz /tf/caf/ \
+      -tfstate ${example}_landingzone_data.tfstate \
+      -var-file /tf/caf/examples/${example}/configuration.tfvars \
+      -var tfstate_landingzone_networking=${example}_landingzone_networking.tfstate \
+      -var landingzone_tag=${example}_landingzone_dap \
+      -a apply
+	  
+```
